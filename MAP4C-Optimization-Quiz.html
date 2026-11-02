@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAP4C – Optimizing Perimeter and Area – Quiz</title>
+<style>
+  :root { --ink:#1f2937; --muted:#5b6472; --line:#d8dee8; --accent:#2457a7; --pale:#f3f6fb; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:#f5f7fa; line-height:1.45; }
+  main { max-width:900px; margin:28px auto; padding:28px; background:white; border:1px solid var(--line); border-radius:12px; }
+  h1 { font-size:1.65rem; margin:0 0 6px; }
+  .sub { color:var(--muted); margin:0 0 22px; }
+  .student { margin:18px 0 24px; }
+  label { font-weight:600; }
+  input[type="text"], input[type="number"] { padding:10px; border:1px solid #aeb8c6; border-radius:6px; font:inherit; }
+  input[type="text"] { width:min(100%,420px); display:block; margin-top:6px; }
+  .question { border:1px solid var(--line); border-radius:9px; padding:18px; margin:18px 0; }
+  .question h2 { font-size:1.05rem; margin:0 0 10px; }
+  .choices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px 18px; }
+  .choice { display:flex; align-items:flex-start; gap:8px; font-weight:normal; }
+  .choice input { margin-top:5px; }
+  .work-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:14px; }
+  .work-grid label { display:block; }
+  .work-grid input { display:block; width:100%; margin-top:5px; }
+  .unit { color:var(--muted); font-weight:normal; }
+  button { border:0; border-radius:7px; padding:12px 18px; font-size:1rem; font-weight:700; cursor:pointer; margin:8px 8px 0 0; }
+  .primary { color:white; background:var(--accent); }
+  .secondary { color:var(--ink); background:#e8edf5; }
+  #results { display:none; margin-top:26px; border-top:2px solid var(--line); padding-top:22px; }
+  .score { font-size:1.35rem; font-weight:700; }
+  .result-item { padding:13px 0; border-bottom:1px solid var(--line); }
+  .correct { color:#14733b; font-weight:700; }
+  .incorrect { color:#b42318; font-weight:700; }
+  .explanation { color:#394454; margin-top:5px; }
+  .report-head { margin-bottom:14px; }
+  .small { color:var(--muted); font-size:.92rem; }
+  @media(max-width:600px) { main{margin:0;padding:18px;border-radius:0} .choices,.work-grid{grid-template-columns:1fr} }
+  @media print {
+    body { background:white; }
+    main { margin:0; max-width:none; border:0; padding:0; }
+    button, .sub.no-print { display:none !important; }
+    .question { break-inside:avoid; }
+    #results { display:block !important; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>MAP4C – Optimizing Perimeter and Area – Quiz</h1>
+  <p class="sub">Answer all six questions. Show your calculations for Question 6. Submit to see your score and feedback.</p>
+  <div class="student">
+    <label for="studentName">Student name</label>
+    <input id="studentName" type="text" autocomplete="name" placeholder="Enter your name">
+  </div>
+
+  <form id="quiz">
+    <section class="question" data-q="1">
+      <h2>1. A farmer has 40 m of fencing to build a rectangular enclosure. What dimensions will produce the maximum area?</h2>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="q1" value="A"> A. 8 m by 12 m</label>
+        <label class="choice"><input type="radio" name="q1" value="C"> C. 10 m by 10 m</label>
+        <label class="choice"><input type="radio" name="q1" value="B"> B. 5 m by 15 m</label>
+        <label class="choice"><input type="radio" name="q1" value="D"> D. 6 m by 14 m</label>
+      </div>
+    </section>
+
+    <section class="question" data-q="2">
+      <h2>2. A rectangular playground has a perimeter of 64 m. Its length is 4 m more than its width. What is its area?</h2>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="q2" value="A"> A. 240 m²</label>
+        <label class="choice"><input type="radio" name="q2" value="C"> C. 224 m²</label>
+        <label class="choice"><input type="radio" name="q2" value="B"> B. 252 m²</label>
+        <label class="choice"><input type="radio" name="q2" value="D"> D. 256 m²</label>
+      </div>
+    </section>
+
+    <section class="question" data-q="3">
+      <h2>3. A company wants to construct a rectangular sign with an area of 144 m². What dimensions give the smallest possible perimeter?</h2>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="q3" value="A"> A. 8 m by 18 m</label>
+        <label class="choice"><input type="radio" name="q3" value="C"> C. 9 m by 16 m</label>
+        <label class="choice"><input type="radio" name="q3" value="B"> B. 6 m by 24 m</label>
+        <label class="choice"><input type="radio" name="q3" value="D"> D. 12 m by 12 m</label>
+      </div>
+    </section>
+
+    <section class="question" data-q="4">
+      <h2>4. A rectangular enclosure has a total perimeter of 50 m. If its width is x and its length is (25 − x), which equation correctly represents its area?</h2>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="q4" value="A"> A. A(x) = 25x − x²</label>
+        <label class="choice"><input type="radio" name="q4" value="C"> C. A(x) = 2x² − 25x</label>
+        <label class="choice"><input type="radio" name="q4" value="B"> B. A(x) = 50x − x²</label>
+        <label class="choice"><input type="radio" name="q4" value="D"> D. A(x) = 25 − 2x</label>
+      </div>
+    </section>
+
+    <section class="question" data-q="5">
+      <h2>5. A rectangular farmer's field has a perimeter of 180 m. The length is 3 times the width. A 2 m wide gate is left unfenced on one of the shorter sides. How many metres of fencing are required?</h2>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="q5" value="A"> A. 88 m</label>
+        <label class="choice"><input type="radio" name="q5" value="C"> C. 180 m</label>
+        <label class="choice"><input type="radio" name="q5" value="B"> B. 178 m</label>
+        <label class="choice"><input type="radio" name="q5" value="D"> D. 176 m</label>
+      </div>
+    </section>
+
+    <section class="question" data-q="6">
+      <h2>6. A rectangular piece of land has a perimeter of 240 metres. Its length is 20 metres greater than its width. A contractor charges $18.50 per metre to install fencing. A 4-metre entrance is left open. Calculate:</h2>
+      <div class="work-grid">
+        <label>a) Length of the property (m)<input type="number" name="q6length" step="any" placeholder="Length"></label>
+        <label>a) Width of the property (m)<input type="number" name="q6width" step="any" placeholder="Width"></label>
+        <label>b) Metres of fencing required<input type="number" name="q6fence" step="any" placeholder="Fencing required"></label>
+        <label>c) Total installation cost ($)<input type="number" name="q6cost" step="any" placeholder="Total cost"></label>
+      </div>
+      <p class="small">Enter numerical answers. You may include your calculations on your own paper.</p>
+    </section>
+
+    <button class="primary" type="submit">Submit quiz and see results</button>
+    <button class="secondary" type="button" id="resetBtn">Clear answers</button>
+  </form>
+
+  <section id="results" aria-live="polite">
+    <div class="report-head">
+      <h2>Quiz Results</h2>
+      <p id="reportName"></p>
+      <p class="score" id="score"></p>
+      <p class="small">This report includes the student's submitted answers, correct answers, and explanations.</p>
+    </div>
+    <div id="feedback"></div>
+    <button class="secondary no-print" type="button" onclick="window.print()">Print / Save report as PDF</button>
+  </section>
+</main>
+<script>
+const answers = {
+  q1: {correct:"C", label:"C. 10 m by 10 m", explanation:"For a fixed perimeter, a square gives the greatest area. With 40 m of fencing, each side is 40 ÷ 4 = 10 m."},
+  q2: {correct:"B", label:"B. 252 m²", explanation:"Let the width be w and the length be w + 4. Then 2w + 2(w + 4) = 64, so 4w = 56 and w = 14. The length is 18, so the area is 14 × 18 = 252 m²."},
+  q3: {correct:"D", label:"D. 12 m by 12 m", explanation:"For a fixed area, the square has the smallest perimeter. Since √144 = 12, the dimensions are 12 m by 12 m."},
+  q4: {correct:"A", label:"A. A(x) = 25x − x²", explanation:"Area = width × length = x(25 − x) = 25x − x²."},
+  q5: {correct:"B", label:"B. 178 m", explanation:"The gate is an opening of 2 m, so subtract it from the total perimeter: 180 − 2 = 178 m of fencing."}
+};
+const number = (v) => Number(v);
+const close = (a,b) => Number.isFinite(a) && Math.abs(a-b) < 0.011;
+document.getElementById("quiz").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("studentName").value.trim() || "Name not entered";
+  let earned = 0, total = 9;
+  let html = "";
+  for (let i=1;i<=5;i++) {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const chosen = selected ? selected.value : "No answer";
+    const ok = chosen === answers["q"+i].correct;
+    if (ok) earned++;
+    html += `<div class="result-item"><strong>Question ${i}:</strong> <span class="${ok?'correct':'incorrect'}">${ok?'Correct':'Incorrect'}</span><br>Student's answer: ${chosen}<br>Correct answer: ${answers["q"+i].label}<div class="explanation">${answers["q"+i].explanation}</div></div>`;
+  }
+  const vals = {
+    length:number(document.querySelector('[name="q6length"]').value),
+    width:number(document.querySelector('[name="q6width"]').value),
+    fence:number(document.querySelector('[name="q6fence"]').value),
+    cost:number(document.querySelector('[name="q6cost"]').value)
+  };
+  const checks = [
+    {key:"length",label:"Length",expected:70,correct:"70 m",why:"Let the width be w and length be w + 20. Since 2L + 2w = 240, L + w = 120. Thus (w + 20) + w = 120, so w = 50 and L = 70 m."},
+    {key:"width",label:"Width",expected:50,correct:"50 m",why:"The width is 50 m because the length is 20 m greater and the two dimensions add to 120 m."},
+    {key:"fence",label:"Fencing required",expected:236,correct:"236 m",why:"Subtract the 4 m entrance from the 240 m perimeter: 240 − 4 = 236 m."},
+    {key:"cost",label:"Total cost",expected:4366,correct:"$4,366.00",why:"Multiply the fencing length by the rate: 236 × $18.50 = $4,366.00."}
+  ];
+  let q6earned = 0;
+  let q6html = "";
+  checks.forEach(c => {
+    const ok = close(vals[c.key],c.expected);
+    if (ok) q6earned++;
+    const student = document.querySelector(`[name="q6${c.key}"]`).value;
+    q6html += `<div class="result-item"><strong>Question 6 – ${c.label}:</strong> <span class="${ok?'correct':'incorrect'}">${ok?'Correct':'Incorrect or unanswered'}</span><br>Student's answer: ${student === "" ? "No answer" : student}${c.key==="cost" && student!=="" ? " (dollars)" : ""}<br>Expected answer: ${c.correct}<div class="explanation">${c.why}</div></div>`;
+  });
+  earned += q6earned;
+  document.getElementById("reportName").textContent = "Student: " + name;
+  document.getElementById("score").textContent = `Score: ${earned} / ${total} (${Math.round(earned/total*100)}%)`;
+  document.getElementById("feedback").innerHTML = html + q6html;
+  document.getElementById("results").style.display = "block";
+  document.getElementById("results").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("resetBtn").addEventListener("click", () => {
+  document.getElementById("quiz").reset();
+  document.getElementById("results").style.display = "none";
+  document.getElementById("studentName").focus();
+});
+</script>
+</body>
+</html>
